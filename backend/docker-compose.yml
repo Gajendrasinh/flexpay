@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres-auth:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: flexpay_auth
+      POSTGRES_USER: flexpay
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+
+  postgres-merchant:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: flexpay_merchant
+      POSTGRES_USER: flexpay
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5434:5432"
+
+  postgres-order:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: flexpay_order
+      POSTGRES_USER: flexpay
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5435:5432"
+
+  # Service placeholders (to be built)
+  # auth-service:
+  #   build: ./auth-service
+  #   depends_on: [postgres-auth]
+  # ...
